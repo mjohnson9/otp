@@ -1,23 +1,27 @@
 #include "otp/otp.h"
 
+namespace {
+const unsigned char NUM_CHARS = otp::MAX - otp::MIN;
+
+unsigned char to_internal(unsigned char c) { return c - otp::MIN; }
+
+unsigned char from_internal(unsigned char c) { return c + otp::MIN; }
+}  // namespace
+
 namespace otp {
 
-std::vector<int64_t> factor(int64_t x) {
-  if (x == 1) {
-    return {1};
-  }
+unsigned char encrypt(unsigned char plaintext, unsigned char key) {
+  unsigned char internalPlaintext = to_internal(plaintext);
+  unsigned char internalKey = to_internal(key);
 
-  std::vector<int64_t> factors;
-  while (x != 1) {
-    for (int64_t i = 2; i <= x; ++i) {
-      if (x % i == 0) {
-        x /= i;
-        factors.push_back(i);
-        break;
-      }
-    }
-  }
-  return factors;
+  return from_internal((internalPlaintext + internalKey) % NUM_CHARS);
 }
 
-}  // namespace factor
+unsigned char decrypt(unsigned char ciphertext, unsigned char key) {
+  unsigned char internalCiphertext = to_internal(ciphertext);
+  unsigned char internalKey = to_internal(key);
+
+  return from_internal((internalCiphertext - internalKey) % NUM_CHARS);
+}
+
+}  // namespace otp

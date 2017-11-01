@@ -6,7 +6,7 @@
 
 namespace otp {
 
-TEST(Factor, SmallNumbers) {
+/*TEST(Factor, SmallNumbers) {
   EXPECT_EQ(factor(1), std::vector<int64_t>({1}));
   EXPECT_EQ(factor(2), std::vector<int64_t>({2}));
   EXPECT_EQ(factor(3), std::vector<int64_t>({3}));
@@ -21,9 +21,17 @@ TEST(Factor, SmallNumbers) {
 TEST(Factor, BigNumbers) {
   EXPECT_EQ(factor(1209), std::vector<int64_t>({3, 13, 31}));
   EXPECT_EQ(factor(4242), std::vector<int64_t>({2, 3, 7, 101}));
+}*/
+
+TEST(otp, reciprocity) {
+  for (unsigned char key = MIN; key <= MAX; key++) {
+    for (unsigned char plaintext = MIN; key <= MAX; key++) {
+      EXPECT_EQ(decrypt(encrypt(plaintext, key), key), plaintext);
+    }
+  }
 }
 
-}  // namespace factor
+}  // namespace otp
 
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);

@@ -4,14 +4,21 @@
 
 namespace otp {
 
-void FactorBench(benchmark::State& state) {
+void OtpEncrypt(benchmark::State& state) {
   while (state.KeepRunning()) {
-    benchmark::DoNotOptimize(factor(state.range_x()));
+    benchmark::DoNotOptimize(encrypt('A', 'Y'));
   }
 }
-BENCHMARK(FactorBench)->Range(1, 10 << 10);
+BENCHMARK(OtpEncrypt);
 
-}  // namespace factor
+void OtpDecrypt(benchmark::State& state) {
+  while (state.KeepRunning()) {
+    benchmark::DoNotOptimize(decrypt('A', 'Y'));
+  }
+}
+BENCHMARK(OtpDecrypt);
+
+}  // namespace otp
 
 int main(int argc, char** argv) {
   benchmark::Initialize(&argc, argv);

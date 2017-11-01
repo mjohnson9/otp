@@ -1,5 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+
 ADD_LIBRARY(otp otp.cc)
 
 ADD_EXECUTABLE(otp_test otp_test.cc otp.cc)

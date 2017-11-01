@@ -9,7 +9,8 @@ SET(CMAKE_CXX_FLAGS_COMMON
     "-std=c++14 \
     -Wall \
     -Wextra \
-    -Werror")
+    -Werror \
+    -Wno-unused-parameter")
 SET(CMAKE_CXX_FLAGS_DEBUG
     "${CMAKE_CXX_FLAGS_DEBUG} \
     ${CMAKE_CXX_FLAGS_COMMON}")
