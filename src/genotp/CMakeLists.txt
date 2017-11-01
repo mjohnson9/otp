@@ -1,0 +1,7 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+
+ADD_EXECUTABLE(genotp genotp.cc)
+TARGET_LINK_LIBRARIES(genotp
+	glog
+    otp
+)
