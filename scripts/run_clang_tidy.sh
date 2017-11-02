@@ -18,7 +18,7 @@ join() {
 main() {
 	if [[ $# -eq 0 ]]; then
 		usage
-		return -1
+		return 64
 	fi
 
 	# Arguments for the `-checks` flag.
