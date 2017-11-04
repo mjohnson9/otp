@@ -21,7 +21,8 @@ main() {
 		return 64
 	fi
 
-	local project_directory="$(dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )")"
+	local project_directory
+	project_directory="$(dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )")"
 
 	if [ ! -d "${project_directory}/build" ]; then
 		printf "%s/build/ doesn't exist\n" "${project_directory}"
