@@ -40,7 +40,7 @@ main() {
 	exec clang-tidy \
 		-checks="$(join "${checks[@]}")" \
 		-header-filter="$header_filter" \
-		-p build/compile_commands.json \
+		-p "${project_directory}/build" \
 		"$@"
 }
 
