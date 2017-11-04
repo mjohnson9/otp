@@ -4,6 +4,5 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 ADD_EXECUTABLE(otpencrypt encrypt.cc)
 TARGET_LINK_LIBRARIES(otpencrypt
-	glog
     otp
 )

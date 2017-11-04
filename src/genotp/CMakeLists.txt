@@ -4,6 +4,5 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 ADD_EXECUTABLE(genotp genotp.cc)
 TARGET_LINK_LIBRARIES(genotp
-	glog
     otp
 )
