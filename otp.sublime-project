@@ -7,6 +7,9 @@
   "settings": {
     "ClangFormat": {
       "format_on_save": true
-    }
+    },
+    "ecc_flags_sources": [
+      {"file": "compile_commands.json", "search_in": "$project_base_path/build"},
+    ],
   }
 }
