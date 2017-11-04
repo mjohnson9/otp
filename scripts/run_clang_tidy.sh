@@ -29,12 +29,15 @@ main() {
 	# Using googletest macros like EXPECT_EQ trigger this check.
 	checks+=('-cppcoreguidelines-pro-type-vararg')
 
+	local project_directory="$(dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )")"
+
 	# Argument for the header-filter command. We want to run clang-tidy on all
 	# of our header files, but not on any of the system header files. We also
 	# do not want to run clang-tidy on any of the generated protobuf headers.
-	local header_filter='cpp_project_template/src'
+	local header_filter="^${project_directory}/src"
 
-	clang-tidy \
+
+	exec clang-tidy \
 		-checks="$(join "${checks[@]}")" \
 		-header-filter="$header_filter" \
 		-p build/compile_commands.json \
