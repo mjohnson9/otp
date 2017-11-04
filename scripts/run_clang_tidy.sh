@@ -21,6 +21,15 @@ main() {
 		return 64
 	fi
 
+	local project_directory="$(dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )")"
+
+	if [ ! -d "${project_directory}/build" ]; then
+		printf "%s/build/ doesn't exist\n" "${project_directory}"
+		printf "you must build the project first using %s/scripts/build_debug.sh or %s/scripts/build_release.sh\n\n" "${project_directory}" "${project_directory}"
+		usage
+		return 64
+	fi
+
 	# Arguments for the `-checks` flag.
 	checks=()
 	checks+=('*')
@@ -29,7 +38,6 @@ main() {
 	# Using googletest macros like EXPECT_EQ trigger this check.
 	checks+=('-cppcoreguidelines-pro-type-vararg')
 
-	local project_directory="$(dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )")"
 
 	# Argument for the header-filter command. We want to run clang-tidy on all
 	# of our header files, but not on any of the system header files. We also
