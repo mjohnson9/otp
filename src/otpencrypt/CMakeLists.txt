@@ -2,9 +2,9 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-ADD_EXECUTABLE(otpdecrypt decrypt.cc)
-TARGET_LINK_LIBRARIES(otpdecrypt
+ADD_EXECUTABLE(otpencrypt otpencrypt.cc)
+TARGET_LINK_LIBRARIES(otpencrypt
     ${GFLAGS_LIBS_DIRS}/libgflags.a
     otp
 )
-ADD_DEPENDENCIES(otpdecrypt googleflags)
+ADD_DEPENDENCIES(otpencrypt googleflags)
