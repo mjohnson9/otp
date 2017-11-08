@@ -11,9 +11,11 @@ TARGET_LINK_LIBRARIES(otp_test
     ${GTEST_LIBS_DIR}/libgtest_main.a
     pthread
 )
+ADD_DEPENDENCIES(otp_test googletest)
 
 ADD_EXECUTABLE(otp_bench otp_bench.cc otp.cc)
 TARGET_LINK_LIBRARIES(otp_bench
     ${GBENCH_LIBS_DIR}/libbenchmark.a
     pthread
 )
+ADD_DEPENDENCIES(otp_bench googlebenchmark)
