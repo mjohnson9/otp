@@ -21,6 +21,8 @@ unsigned char decrypt(unsigned char ciphertext, unsigned char key) {
   unsigned char internalCiphertext = to_internal(ciphertext);
   unsigned char internalKey = to_internal(key);
 
+  internalCiphertext += NUM_CHARS;  // Add NUM_CHARS to prevent underflow
+
   return from_internal((internalCiphertext - internalKey) % NUM_CHARS);
 }
 
