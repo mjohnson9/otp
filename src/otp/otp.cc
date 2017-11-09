@@ -1,7 +1,7 @@
 #include "otp/otp.h"
 
 namespace {
-const unsigned char NUM_CHARS = otp::MAX - otp::MIN;
+const unsigned char NUM_CHARS = otp::MAX - otp::MIN + 1;
 
 unsigned char to_internal(unsigned char c) { return c - otp::MIN; }
 
